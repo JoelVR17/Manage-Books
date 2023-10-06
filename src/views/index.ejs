@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include('partials/header') %>
+    <title>Home</title>
+  </head>
+  <body>
+    <div class="container p-4">
+      <h1 class="text-center fs-6 bold">Book Store</h1>
+      <a class="w-100 btn btn-success my-3" href="./new-entry">Add Book</a>
+      <div class="row">
+        <% if (!books.length == 0) { %> <% books.forEach(function (book) { %>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header">
+              <h2 class="text-center"><%= book.title %></h2>
+            </div>
+            <img
+              src="<%= book.image %>"
+              class="card-img-top"
+              alt="Book Image"
+            />
+            <div class="card-body">
+              <p><%= book.description %></p>
+              <h2><%= book.author %></h2>
+            </div>
+            <div class="card-footer">
+              <a href="/delete/<%= book.id %>" class="w-100 btn btn-danger"
+                >Delete</a
+              >
+            </div>
+          </div>
+        </div>
+        <% }); %> <% } else {; %>
+        <h1>Not Found Books</h1>
+        <% } %>
+      </div>
+    </div>
+  </body>
+</html>
